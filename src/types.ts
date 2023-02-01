@@ -30,3 +30,5 @@ export interface Statement {
 }
 
 export type Group = Array<Statement | "AND" | "OR" | Group>;
+
+export type ValueOrReference = { name: string } | number | string | boolean;

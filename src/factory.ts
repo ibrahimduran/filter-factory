@@ -1,3 +1,4 @@
+import { QueryBuilder } from "./builder";
 import { Parser } from "./parser";
 
 interface Reference<Types extends string = string> {
@@ -151,6 +152,13 @@ export class QueryFactory<Types extends string, Acc> {
     }
 
     return narrowed;
+  }
+
+  create(): QueryBuilder {
+    return new QueryBuilder(
+      this,
+      this.#acc ? JSON.parse(JSON.stringify(this.#acc)) : this.#acc,
+    );
   }
 
   public token(token: Token<Types> | string) {

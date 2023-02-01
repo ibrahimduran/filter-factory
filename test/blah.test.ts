@@ -38,6 +38,9 @@ describe("blah", () => {
       operator: "EXISTS",
     });
 
+    factory.create()
+      .and("left", "EQUALS", "test");
+
     const parsed = factory.parse(
       `content SEARCH "1" AND (content SEARCH "2" OR content SEARCH "3")  gf`,
     );
