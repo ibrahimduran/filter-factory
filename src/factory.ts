@@ -1,5 +1,6 @@
 import { QueryBuilder } from "./builder";
 import { Parser } from "./parser";
+import { Group } from "./types";
 
 interface Reference<Types extends string = string> {
   name: string;
@@ -95,7 +96,7 @@ export class QueryFactory<Types extends string, Acc> {
     this.#operatorSet.add(def.operator);
   }
 
-  parse(input: string): any[] {
+  parse(input: string): Group {
     return new Parser(input, this).parse();
   }
 
@@ -152,6 +153,13 @@ export class QueryFactory<Types extends string, Acc> {
     }
 
     return narrowed;
+  }
+
+  transform(): Group<Acc> {
+    // const group =
+    const acc: Acc = JSON.parse(JSON.stringify(this.#acc));
+
+    return acc;
   }
 
   create(): QueryBuilder {

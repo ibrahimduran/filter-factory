@@ -29,6 +29,7 @@ export interface Statement {
   right?: LiteralValueToken | ReferenceToken;
 }
 
-export type Group = Array<Statement | "AND" | "OR" | Group>;
+// export type Group = { op: "AND" | "OR"; children: Array<Statement | Group> };
+export type Group<T = Statement> = Array<T | "AND" | "OR" | Group>;
 
 export type ValueOrReference = { name: string } | number | string | boolean;

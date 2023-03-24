@@ -4,9 +4,9 @@ import { Group, isTokenOf, Statement, Token } from "./types";
 export class Parser {
   #input: string;
   #index: number;
-  #factory: QueryFactory<string>;
+  #factory: QueryFactory<string, any>;
 
-  constructor(input: string, factory: QueryFactory<string>) {
+  constructor(input: string, factory: QueryFactory<string, any>) {
     this.#input = input;
     this.#index = 0;
     this.#factory = factory;
